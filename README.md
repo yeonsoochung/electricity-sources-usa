@@ -1,8 +1,8 @@
-# Analysis of electricity sources in the United States
+# Analysis of Electricity Sources in the United States
 
 The Energy Information Administration (EIA) publishes a wealth of energy-related data collected across the country. In this project, I analyzed the sources of electricity generated in the United States. I implemented an ELT process that extracts power plant electricity generation data from EIA’s API along with power plant location data which was downloaded as a flat file from EIA’s website. The data was loaded into a Postgres database and transformed with SQL to create the data model, and the associated data tables were loaded into Power BI as views for visual analysis.
 
-My Power BI report can be viewed here: https://app.powerbi.com/view?r=eyJrIjoiOWEzZjFkZTctNGFhOC00OTVlLTg0YzUtZDcyMGJiZWIwMTljIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
+My interactive Power BI report can be viewed here: https://app.powerbi.com/view?r=eyJrIjoiOWEzZjFkZTctNGFhOC00OTVlLTg0YzUtZDcyMGJiZWIwMTljIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
 Its pbix file can be downloaded here: https://drive.google.com/file/d/1nvtkyzhptsOAziV_tn7Md7iHL6ipzlkU
 
@@ -26,7 +26,7 @@ Among renewable energy sources (across the entire data set), hydro is the domina
 <img src="images/usa-all.jpg" alt="Alt text" width="600"/>
 </p>
 
-Below, I summarize my findings for each region.
+Below, I summarize my findings for each region. More detailed analysis can be performed with the interactive PBI report.
 
 ### Midwest
 
