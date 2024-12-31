@@ -93,11 +93,13 @@ For most of the data set, hydro was the largest renewable source of electricity,
 - **eia-sql.sql:** This SQL script (PostgreSQL) does the following.
   -	Creates a table and view of dates covering the range of dates in the power plant electricity data.
   -	Creates a view of the power plant locations data. This view contains columns for month, month name, quarter, year, and more so that Power Query is not used to create new date-related columns in Power BI.
+    - Contains 12,798 data points
   -	Processes the power plant electricity data to
     -	Convert energy units
     -	Categorize fuel types (i.e., electricity sources) into broader categories
     -	Categorize states into regions
     -	Create a view of the transformed table
+    -	Contains 5,975,183 rows of data.
   -	The views “dates_view”, “power_plants_loc_view”, and “power_plants_usa_view” were imported to Power BI.
 
 Below is an image of the data model in Power BI, demonstrating the relationships between the imported views for this PBI report.
