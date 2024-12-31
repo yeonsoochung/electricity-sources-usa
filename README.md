@@ -60,6 +60,24 @@ For most of the data set, hydro was the largest renewable source of electricity,
 
 ## ELT Step and Data Model
 
+- **eia-api.py:** This Python script calls EIA’s API to obtain power plant-level electricity data.
+  -	To avoid overloading the API, I obtained data from the API and exported it to a csv for one to three states at a time. Data for CA was obtained as two csv files for debugging purposes.
+  -	This code takes into account that each API request is limited to 5000 data points at a time.
+
+- **eia-sql.sql:** This SQL script (PostgreSQL) does the following.
+  -	Creates a table and view of dates covering the range of dates in the power plant electricity data.
+  -	Creates a view of the power plant locations data. This view contains columns for month, month name, quarter, year, and more so that Power Query is not used to create new date-related columns in Power BI.
+  -	Processes the power plant electricity data to
+    -	Convert energy units
+    -	Categorize fuel types (i.e., electricity sources) into broader categories
+    -	Categorize states into regions
+    -	Create a view of the transformed table
+  -	The views “dates_view”, “power_plants_loc_view”, and “power_plants_usa_view” were imported to Power BI.
+
+Below is an image of the data model in Power BI, demonstrating the relationships between the imported views for this PBI report.
+
+<image>
+
 
 
 
