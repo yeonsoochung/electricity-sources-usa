@@ -2,7 +2,7 @@
 
 The Energy Information Administration (EIA) publishes a wealth of energy-related data collected across the country. In this project, I analyzed the sources of electricity generated in the United States. I implemented an ELT process that extracts power plant electricity generation data from EIA’s API along with power plant location data which was downloaded as a flat file from EIA’s website. The data was loaded into a Postgres database and transformed with SQL to create the data model, and the associated data tables were loaded into Power BI as views for visual analysis.
 
-My Power BI report can be viewed here:
+My Power BI report can be viewed here: https://app.powerbi.com/view?r=eyJrIjoiOGYxZDFjMjItMTlmYi00ZDcwLTg3MjEtOGZiYzhmY2EwMjBmIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
 Its pbix file can be downloaded here:
 
