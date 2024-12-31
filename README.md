@@ -17,13 +17,13 @@ Below is an image of my report:
 Across the entire data set, coal, natural gas, nuclear, and renewables have been the top sources of electricity. Electricity generated from coal has been declining since 2008, while the share of generation from natural gas and renewable energy sources has been steadily increasing. Electricity generated from nuclear power has been steadily consistent. In 2024 (through Sep.), natural gas was the largest source of electricity, more than double the next largest source, nuclear, which produced similar amounts of electricity as coal and renewables. 
 
 <p align="center">
-<img src="images/usa-all.jpg" alt="Alt text" width="800"/>
+<img src="images/usa-all.jpg" alt="Alt text" width="500"/>
 </p>
 
 Among renewable energy sources (across the entire data set), hydro is the dominant source of electricity, followed by wind. In recent years, however, wind has taken the top spot, while hydro and solar have converged. 
 
 <p align="center">
-<img src="images/usa-all.jpg" alt="Alt text" width="800"/>
+<img src="images/usa-all.jpg" alt="Alt text" width="500"/>
 </p>
 
 Below, I summarize my findings for each region.
