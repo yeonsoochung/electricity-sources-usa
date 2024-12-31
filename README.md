@@ -4,7 +4,7 @@ The Energy Information Administration (EIA) publishes a wealth of energy-related
 
 My Power BI report can be viewed here: https://app.powerbi.com/view?r=eyJrIjoiOGYxZDFjMjItMTlmYi00ZDcwLTg3MjEtOGZiYzhmY2EwMjBmIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
-Its pbix file can be downloaded here:
+Its pbix file can be downloaded here: https://drive.google.com/file/d/1wvH8xCvVU1KRO7mVQZX7OdaTBr_0Tjn-/view?usp=sharing
 
 Below is an image of my report:
 
