@@ -18,30 +18,20 @@ def create_csv(url, params, csv_name):
     params = params.copy()
     json_data = get_json(url, params)
     df = pd.DataFrame(json_data["response"]["data"])
-    # print(len(json_data["response"]["data"]))
-    # counter = 1
-    # print("counter:", counter)
     while len(json_data["response"]["data"]) == 5000:
-        # print(json_data["response"]["data"][0]["period"] , json_data["response"]["data"][-1]["period"])
-        # print(json_data["response"]["data"][0]["plantCode"], json_data["response"]["data"][-1]["plantCode"])
         if json_data["response"]["data"][0]["period"] == json_data["response"]["data"][-1]["period"]:
             params["start"] = json_data["response"]["data"][-1]["period"]
             params["offset"] = 5000
             json_data = get_json(url, params)
-            # print(len(json_data["response"]["data"]))
             df_new = pd.DataFrame(json_data["response"]["data"])
             df = pd.concat([df, df_new], axis=0, ignore_index=True)
             params["offset"] = None
-            # counter += 1
         else:
             params["start"] = json_data["response"]["data"][-1]["period"]
             json_data = get_json(url, params)
             print(len(json_data["response"]["data"]))
             df_new = pd.DataFrame(json_data["response"]["data"])
             df = pd.concat([df, df_new], axis=0, ignore_index=True)
-            # counter += 1
-        # print("counter:", counter)
-    # print("Counter =", counter) 
     # Remove duplicate rows
     df.drop_duplicates(inplace=True)
     df.to_csv(csv_name, index=False)
@@ -111,21 +101,6 @@ params_plants = {
     "length": "5000" }
 
 create_csv(url_plants, params_plants, "elec_power_plants_midwest_4.csv")
-
-
-url_plants = f"https://api.eia.gov/v2/electricity/facility-fuel/data/?api_key={api_key}"
-params_plants = {
-    "frequency": "monthly",
-    "data[]": [ "consumption-for-eg-btu", "total-consumption-btu", "generation", "gross-generation" ],
-    "facets[state][]": ["IL", "IN", "IA"],
-    "start": "2001-01",
-    "end": None,
-    "sort[0][column]": "period",
-    "sort[0][direction]": "asc",
-    "offset": "0",
-    "length": "5000" }
-
-create_csv(url_plants, params_plants, "elec_power_plants_midwest_5.csv")
 
 
 '''
