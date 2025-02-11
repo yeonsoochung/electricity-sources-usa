@@ -91,11 +91,9 @@ For most of the data set, hydro was the largest renewable source of electricity,
 ## ELT Step and Data Model
 
 - **api_gcs_bq_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
-
-<p align="center">
-<img src="images/dag.jpg" alt="Alt text" width="1000"/>
-</p>
-
+  - <p align="center">
+    <img src="images/dag.jpg" alt="Alt text" width="1000"/>
+    </p>
   -	The DAG automates the pipeline of (1) Download power plant electricity data via API calls; (2) Upload the data to my GCS bucket; (3) Load the data from GCS to BigQuery; (4) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery; (5) Run the dates.sql queries; (6) Run the transformations.sql queries.
   -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI.
   -	Since I use the free tier of Power BI service, I am unable to implement an refresh feature that updates the dashboard automatically with new BigQuery data. I would have to refresh the data in Power BI after the DAG schedule is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
