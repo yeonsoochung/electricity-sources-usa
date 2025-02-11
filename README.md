@@ -10,8 +10,6 @@ There is a few-month lag in EIA's data updates, so the PBI report contains data 
 
 The report's pbix file can be downloaded here: https://drive.google.com/file/d/11DmhhXnnlpBwjaqlRQdvDrmg01Zsc-Zf
 
-https://drive.google.com/file/d/1nvtkyzhptsOAziV_tn7Md7iHL6ipzlkU
-
 Below is an image of my report:
 
 <p align="center">
