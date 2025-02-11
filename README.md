@@ -2,13 +2,15 @@
 
 The Energy Information Administration (EIA) publishes a wealth of energy-related data collected across the country. In this project, I analyzed the sources of electricity generated in the United States. I used Apache Airflow to implement an automated ELT pipeline that extracts power plant electricity generation data from EIA’s API, loading it into a Google Cloud Service (GCS) bucket and subsequently into a BigQuery dataset. Also included is a data set of power plant locations after downloading it as a flat file (and processed to only include the columns I was interested in) from EIA’s website. After loading into BigQuery, the data was transformed with SQL queries to create the data model, and the associated data tables were loaded into Power BI as views for visual analysis.
 
-To avoid posting any keys and credentials, I uploaded the Python script for my Airflow DAG, the SQL queries, and the docker-compose yaml file.
+To avoid posting any keys and credentials, I only uploaded the Python script for my Airflow DAG, SQL queries, and the docker-compose yaml file.
 
 My interactive Power BI report, with data extracted on Feb. 10, 2025, can be viewed here: https://app.powerbi.com/view?r=eyJrIjoiZmVjN2IzYmEtOTYyOC00OWY2LTk5ODgtY2IyMTQzYWFmYTgyIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
 There is a few-month lag in EIA's data updates, so the PBI report contains data up through Nov. 2024.
 
-The report's pbix file can be downloaded here: https://drive.google.com/file/d/1nvtkyzhptsOAziV_tn7Md7iHL6ipzlkU
+The report's pbix file can be downloaded here: https://drive.google.com/file/d/11DmhhXnnlpBwjaqlRQdvDrmg01Zsc-Zf
+
+https://drive.google.com/file/d/1nvtkyzhptsOAziV_tn7Md7iHL6ipzlkU
 
 Below is an image of my report:
 
