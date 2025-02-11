@@ -93,7 +93,7 @@ For most of the data set, hydro was the largest renewable source of electricity,
 - **api_gcs_bq_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
 
 <p align="center">
-<img src="images/dag.jpg" alt="Alt text" width="600"/>
+<img src="images/dag.jpg" alt="Alt text" width="1000"/>
 </p>
 
   -	The DAG automates the pipeline of (1) Download power plant electricity data via API calls; (2) Upload the data to my GCS bucket; (3) Load the data from GCS to BigQuery; (4) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery; (5) Run the dates.sql queries; (6) Run the transformations.sql queries.
