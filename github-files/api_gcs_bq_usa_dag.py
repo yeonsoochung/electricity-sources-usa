@@ -23,7 +23,6 @@ dag = DAG(
 # Define API input parameters
 api_key = "<My Key>"
 url_plants = f"https://api.eia.gov/v2/electricity/facility-fuel/data/?api_key={api_key}"
-# states = ["IL", "IN", "IA"]
 states = ["IL", "IN", "IA", "KS", "MI", "MN", "MO", "NE", "ND", "OH", "SD", "WI", "IL", "IN", "IA", 
           "CT", "ME", "MA", "NH", "NJ", "NY", "PA", "RI", "VT", "AL", "AR", "FL", "GA", "KY", "LA", 
           "MS", "NC", "OK", "SC", "TN", "TX", "VA", "DC", "MD", "DE", "WV", "AZ", "AK", "CO", "ID", 
