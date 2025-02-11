@@ -90,23 +90,24 @@ For most of the data set, hydro was the largest renewable source of electricity,
 
 ## ELT Step and Data Model
 
-- **eia-api.py:** This Python script calls EIA’s API to obtain power plant-level electricity data.
-  -	To avoid overloading the API, I obtained data from the API and exported it to a csv for one to three states at a time. Data for CA was obtained as two csv files for debugging purposes.
-  -	This code takes into account that each API request is limited to 5000 data points at a time.
+- **api_gcs_bq_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
 
-- **eia-sql.sql:** This SQL script (PostgreSQL) does the following.
-  -	Creates a table and view of dates called **dates_view** covering the range of dates in the power plant electricity data.
-  -	Creates a view called **power_plants_loc_view** of the power plant locations data. This view contains columns for month, month name, quarter, year, and more so that Power Query is not used to create new date-related columns in Power BI.
-    - Contains 12,798 data points
-  -	Processes the power plant electricity data to
+<p align="center">
+<img src="images/dag.jpg" alt="Alt text" width="600"/>
+</p>
+
+  -	The DAG automates the pipeline of (1) Download power plant electricity data via API calls; (2) Upload the data to my GCS bucket; (3) Load the data from GCS to BigQuery; (4) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery; (5) Run the dates.sql queries; (6) Run the transformations.sql queries.
+  -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI.
+  -	Since I use the free tier of Power BI service, I am unable to implement an refresh feature that updates the dashboard automatically with new BigQuery data. I would have to refresh the data in Power BI after the DAG schedule is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
+
+- **dates.sql:** This BigQuery SQL script creates a table called **dates** covering the range of dates in the power plant electricity data.
+- **transformation.sql:** This script processes the power plant electricity data and does the following:
     -	Convert energy units
     -	Categorize fuel types (i.e., electricity sources) into broader categories
     -	Categorize states into regions
-    -	Create a view of the transformed table (**power_plants_usa_view**)
-    -	Contains 5,975,183 rows of data.
-  -	The views **dates_view**, **power_plants_loc_view**, and **power_plants_usa_view** were imported to Power BI.
+    -	As of Feb. 10, 2025, contains 6,165,628 rows of data.
 
-Below is an image of the data model in Power BI, demonstrating the relationships between the imported views for this PBI report.
+Below is an image of the data model in Power BI, demonstrating the relationships between the imported tables for this PBI report.
 
 <p align="center">
 <img src="images/data-model.jpg" alt="Alt text" width="1000"/>
