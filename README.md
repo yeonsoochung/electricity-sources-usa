@@ -4,11 +4,11 @@ The Energy Information Administration (EIA) publishes a wealth of energy-related
 
 To avoid posting any keys and credentials, I only uploaded the Python script for my Airflow DAG, SQL queries, and the docker-compose yaml file.
 
-My interactive Power BI report, with data extracted on Feb. 10, 2025, can be viewed here: https://app.powerbi.com/view?r=eyJrIjoiZmVjN2IzYmEtOTYyOC00OWY2LTk5ODgtY2IyMTQzYWFmYTgyIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
+My interactive Power BI report can be viewed here (updated Mar. 4, 2025): https://app.powerbi.com/view?r=eyJrIjoiNzA4NjU4MjMtMzJhMi00NWExLWFhZTktNzJiMjM3ZWIxNDgwIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
-There is a few-month lag in EIA's data updates, so the PBI report contains data up through Nov. 2024.
+There is a few-month lag in EIA's data updates that is reflected in the report's date range.
 
-The report's pbix file can be downloaded here: https://drive.google.com/file/d/11DmhhXnnlpBwjaqlRQdvDrmg01Zsc-Zf
+The report's pbix file can be downloaded here: https://drive.google.com/file/d/1DUjGWPoMX2dukYVakma7DeV6OAOuguwh
 
 Below is an image of my report:
 
@@ -17,6 +17,8 @@ Below is an image of my report:
 </p>
 
 ## Summary of Findings
+
+Note: This section describes findings associated with an older version of the report (i.e., date range ends sooner than in published report).
 
 Across the entire data set, coal, natural gas, nuclear, and renewables have been the top sources of electricity. Electricity generated from coal has been declining since 2008, while the share of generation from natural gas and renewable energy sources has been steadily increasing. Electricity generated from nuclear power has been steadily consistent. In 2024 (through Sep.), natural gas was the largest source of electricity, more than double the next largest source, nuclear, which produced similar amounts of electricity as coal and renewables. 
 
