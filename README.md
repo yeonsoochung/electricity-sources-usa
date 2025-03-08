@@ -16,7 +16,7 @@ Below is an image of my report:
 <img src="images/dashboard.jpg" alt="Alt text" width="1000"/>
 </p>
 
-## ELT Step and Data Model
+## ELT Pipeline and Data Model
 
 - **api_gcs_bq_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
   - <p align="center">
