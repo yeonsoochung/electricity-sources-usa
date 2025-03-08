@@ -16,6 +16,29 @@ Below is an image of my report:
 <img src="images/dashboard.jpg" alt="Alt text" width="1000"/>
 </p>
 
+## ELT Step and Data Model
+
+- **api_gcs_bq_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
+  - <p align="center">
+    <img src="images/dag.jpg" alt="Alt text" width="1000"/>
+    </p>
+  -	The DAG automates the pipeline of (1) Download power plant electricity data via API calls; (2) Upload the data to my GCS bucket; (3) Load the data from GCS to BigQuery; (4) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery; (5) Run the dates.sql queries; (6) Run the transformations.sql queries.
+  -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI.
+  -	Since I use the free tier of Power BI Service, I am unable to implement an auto-refresh feature that updates the dashboard automatically with new BigQuery data. I would have to re-import the updated data in Power BI after the scheduled DAG is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
+
+- **dates.sql:** This BigQuery SQL script creates a table called **dates** covering the range of dates in the power plant electricity data.
+- **transformation.sql:** This script processes the power plant electricity data and does the following:
+    -	Convert energy units
+    -	Categorize fuel types (i.e., electricity sources) into broader categories
+    -	Categorize states into regions
+    -	As of Feb. 10, 2025, contains 6,165,628 rows of data.
+
+Below is an image of the data model in Power BI, demonstrating the relationships between the imported tables for this PBI report.
+
+<p align="center">
+<img src="images/data-model.jpg" alt="Alt text" width="1000"/>
+</p>
+
 ## Summary of Findings
 
 Note: This section describes findings associated with an older version of the report (i.e., date range ends sooner than in published report).
@@ -90,28 +113,6 @@ For most of the data set, hydro was the largest renewable source of electricity,
 <img src="images/west-renewables.jpg" alt="Alt text" width="600"/>
 </p>
 
-## ELT Step and Data Model
-
-- **api_gcs_bq_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
-  - <p align="center">
-    <img src="images/dag.jpg" alt="Alt text" width="1000"/>
-    </p>
-  -	The DAG automates the pipeline of (1) Download power plant electricity data via API calls; (2) Upload the data to my GCS bucket; (3) Load the data from GCS to BigQuery; (4) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery; (5) Run the dates.sql queries; (6) Run the transformations.sql queries.
-  -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI.
-  -	Since I use the free tier of Power BI service, I am unable to implement an refresh feature that updates the dashboard automatically with new BigQuery data. I would have to refresh the data in Power BI after the DAG schedule is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
-
-- **dates.sql:** This BigQuery SQL script creates a table called **dates** covering the range of dates in the power plant electricity data.
-- **transformation.sql:** This script processes the power plant electricity data and does the following:
-    -	Convert energy units
-    -	Categorize fuel types (i.e., electricity sources) into broader categories
-    -	Categorize states into regions
-    -	As of Feb. 10, 2025, contains 6,165,628 rows of data.
-
-Below is an image of the data model in Power BI, demonstrating the relationships between the imported tables for this PBI report.
-
-<p align="center">
-<img src="images/data-model.jpg" alt="Alt text" width="1000"/>
-</p>
 
 
 
