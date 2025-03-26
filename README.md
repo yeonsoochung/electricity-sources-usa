@@ -82,7 +82,7 @@ As a source of electricity, coal has been decreasing since 2007, and in 2024, it
 Hydro constitutes the bulk of electricity generated from renewable sources.
 
 <p align="center">
-<img src="images/northeast-renesables.jpg" alt="Alt text" width="600"/>
+<img src="images/northeast-renewables.jpg" alt="Alt text" width="600"/>
 </p>
 
 ### South
