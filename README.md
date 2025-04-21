@@ -4,11 +4,11 @@ The Energy Information Administration (EIA) publishes a wealth of energy-related
 
 To avoid posting any keys and credentials, I only uploaded the Python script for my Airflow DAG, SQL queries, and the docker-compose yaml file.
 
-My interactive Power BI report can be viewed here (updated Mar. 4, 2025): https://app.powerbi.com/view?r=eyJrIjoiZDQwMDlmOTItYzg5NS00OWUxLWJkZjUtY2MzYmM4MTNkNmFjIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
+My interactive Power BI report can be viewed here (updated Apr. 20, 2025): https://app.powerbi.com/view?r=eyJrIjoiNDgzYjEwYzctMGIzNy00NTQzLTgxNGYtMDdmOGI2ZDRmZTgyIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
-There is a few-month lag in EIA's data updates, so, for example, data collected in Mar. 2025 ranges from Jan. 2001 to Dec. 2024.
+There is a few-month lag in EIA's data updates, so, for example, data collected in Mar. 2025 ranges from Jan. 2001 to Dec. 2024. Furthermore, the most recent dates' data compilation could be a work in progress at the EIA, which partially explains the dashboard's visuals showing steep drops at the most recent dates.
 
-The report's pbix file can be downloaded here: https://drive.google.com/file/d/1sYKnN0Nj6sffuQFhJpZlZG0mVgUToop-
+The report's pbix file can be downloaded here: https://drive.google.com/file/d/1g6XNJSjRJArVaDmBXi7lKsDI4iZpC7a6
 
 Below is an image of my report:
 
