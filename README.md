@@ -60,7 +60,7 @@ Constellation Nuclear generated the most electricity across the entire dataset (
 The date range and other filters can be modified for further analysis.
 
 <p align="center">
-<img src="images/top-utility-usa.jpg" alt="Alt text" width="600"/>
+<img src="images/top-utility-usa.jpg" alt="Alt text" width="1000"/>
 </p>
 
 Below, I summarize my findings for each region. More detailed analysis can be performed with the interactive PBI report.
@@ -114,7 +114,7 @@ Wind has been the largest renewable source, but solar is catching up and overtoo
 The most productive utility in the South in Q3 of 2024 was Florida Power & Light Co. with 76 TWh, with most of their electricity coming from natural gas.
 
 <p align="center">
-<img src="images/top-utility-south.jpg" alt="Alt text" width="600"/>
+<img src="images/top-utility-south.jpg" alt="Alt text" width="1000"/>
 </p>
 
 ### West
