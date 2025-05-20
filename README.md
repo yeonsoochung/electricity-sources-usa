@@ -41,7 +41,7 @@ Below is an image of the data model in Power BI, demonstrating the relationships
 
 ## Summary of Findings
 
-Note: This section describes findings associated with an older version of the report (i.e., date range ends sooner than in published report).
+Note: Some of findings/visuals here are associated with an older version of the report (i.e., date range ends sooner than in published report).
 
 Across the entire data set, coal, natural gas, nuclear, and renewables have been the top sources of electricity. Electricity generated from coal has been declining since 2008, while the share of generation from natural gas and renewable energy sources has been steadily increasing. Electricity generated from nuclear power has been steadily consistent. In 2024 (through Sep.), natural gas was the largest source of electricity, more than double the next largest source, nuclear, which produced similar amounts of electricity as coal and renewables. 
 
