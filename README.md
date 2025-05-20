@@ -55,7 +55,7 @@ Among renewable energy sources (across the entire data set), hydro is the domina
 <img src="images/usa-all.jpg" alt="Alt text" width="600"/>
 </p>
 
-Constellation Nuclear generated the most electricity across the entire dataset (over 12.5 billion MWh), with 100% of it coming from nuclear power plants located in IL and a few states on the east coast. They also produced the most in Q3 of 2024 (amost 140 TWh).
+Constellation Nuclear generated the most electricity across the country in Q3 of 2024 with almost 140 TWh. Data for Q4 of 2024 may still be being backfilled by the EIA.
 
 The date range and other filters can be modified for further analysis.
 
@@ -79,7 +79,7 @@ Among renewables, wind is the dominant source of electricity, and it has been gr
 <img src="images/midwest-renewables.jpg" alt="Alt text" width="600"/>
 </p>
 
-Constellation Nuclear's power plants were the largest producers of electricity in the Midwest in Q3 of 2024 (99 TWh).
+Constellation Nuclear's power plants were the largest producers of electricity in the Midwest in Q3 of 2024 (over 99 TWh). Similar to nationwide trend, its Midwest trend is also relatively consistent in output from nuclear energy.
 
 ### Northeast
 
@@ -95,7 +95,7 @@ Hydro constitutes the bulk of electricity generated from renewable sources.
 <img src="images/northeast-renewables.jpg" alt="Alt text" width="600"/>
 </p>
 
-Again, Constellation Nuclear was the largest producer of electricity in the Northeast in Q3 of 2024 at over 33 TWh.
+Again, Constellation Nuclear was the largest producer of electricity in the Northeast in Q3 of 2024 at over 33 TWh. Again, the trend over time is pretty consistent.
 
 ### South
 
@@ -111,7 +111,7 @@ Wind has been the largest renewable source, but solar is catching up and overtoo
 <img src="images/south-renewables.jpg" alt="Alt text" width="600"/>
 </p>
 
-The most productive utility in the South in Q3 of 2024 was Florida Power & Light Co. with 76 TWh, with most of their electricity coming from natural gas.
+The most productive utility in the South in Q3 of 2024 was Florida Power & Light Co. at 87 TWh, with most of their electricity coming from natural gas.
 
 <p align="center">
 <img src="images/top-utility-south.jpg" alt="Alt text" width="1000"/>
@@ -133,7 +133,9 @@ For most of the data set, hydro was the largest renewable source of electricity,
 
 Arizona Public Service Co. generated the most electricity in Q3 of 2024 with almost 30 TWh.
 
-
+<p align="center">
+<img src="images/top-utility-west.jpg" alt="Alt text" width="1000"/>
+</p>
 
 
 
