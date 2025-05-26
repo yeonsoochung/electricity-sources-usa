@@ -52,7 +52,7 @@ Across the entire data set, coal, natural gas, nuclear, and renewables have been
 Among renewable energy sources (across the entire data set), hydro is the dominant source of electricity, followed by wind. In recent years, however, wind has taken the top spot, while hydro and solar have converged. 
 
 <p align="center">
-<img src="images/usa-all.jpg" alt="Alt text" width="600"/>
+<img src="images/usa-renewables.jpg" alt="Alt text" width="600"/>
 </p>
 
 Constellation Nuclear generated the most electricity across the country in Q3 of 2024 with almost 140 TWh. Data for Q4 of 2024 may still be being backfilled by the EIA.
