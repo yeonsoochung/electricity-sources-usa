@@ -6,7 +6,7 @@ To avoid posting any keys and credentials, I only uploaded the Python script for
 
 My interactive Power BI report can be viewed here (updated Apr. 20, 2025): https://app.powerbi.com/view?r=eyJrIjoiNDgzYjEwYzctMGIzNy00NTQzLTgxNGYtMDdmOGI2ZDRmZTgyIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
-There is a few-month lag in EIA's data updates, so, for example, data collected in Mar. 2025 ranges from Jan. 2001 to Dec. 2024. Furthermore, the most recent dates' data compilation could be a work in progress at the EIA, which partially explains the dashboard's visuals showing steep drops at the most recent dates.
+EIA regularly updates their data retroactively, especially dates that are more recent, and smaller power plants generally take longer to get updated. Furthermore, upon data collection, the most recent available data is from a few months prior.
 
 The report's pbix file can be downloaded here: https://drive.google.com/file/d/1g6XNJSjRJArVaDmBXi7lKsDI4iZpC7a6
 
