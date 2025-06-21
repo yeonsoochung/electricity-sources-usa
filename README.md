@@ -4,11 +4,11 @@ The Energy Information Administration (EIA) publishes a wealth of energy-related
 
 To avoid posting any keys and credentials, I only uploaded the Python script for my Airflow DAG, SQL queries, and the docker-compose yaml file.
 
-My interactive Power BI report can be viewed here (updated June 9, 2025): https://app.powerbi.com/view?r=eyJrIjoiZTU3NmI5MzAtM2MwYS00YmZjLWIyMjgtNGE4YjJiY2UyYjExIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
+My interactive Power BI report can be viewed here (updated June 20, 2025): https://app.powerbi.com/view?r=eyJrIjoiNjE4NmYzNWItMWJhNi00MmE4LTk2OWYtYmI0NGM5Mjk1ZmMxIiwidCI6ImJlMjI4MDdiLTI1OTEtNDBkNy1iYmI2LTBkYTg0ZDMxYWNmNyIsImMiOjN9
 
 EIA regularly updates their data retroactively, especially dates that are more recent, and smaller power plants generally take longer to get updated. Furthermore, upon data collection, the most recent available data is from a few months prior.
 
-The report's pbix file can be downloaded here: https://drive.google.com/file/d/1ug8TLN3nPDmsKIJ37t0Pn31dnZFionuC
+The report's pbix file can be downloaded here: https://drive.google.com/file/d/1gU1bCeMWKz1K09J-SvOpggA09RTmTXuV
 
 Below is an image of my report:
 
