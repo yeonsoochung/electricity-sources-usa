@@ -22,16 +22,17 @@ Below is an image of my report:
   - <p align="center">
     <img src="images/dag.jpg" alt="Alt text" width="1000"/>
     </p>
-  -	The DAG automates the pipeline of (1) Download power plant electricity data via API calls; (2) Upload the data to my GCS bucket; (3) Load the data from GCS to BigQuery; (4) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery; (5) Run the dates.sql queries; (6) Run the transformations.sql queries.
-  -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI.
+  -	The DAG automates the pipeline as such:
+    -	(1) latest_only ensures only the latest run is executed when the pipeline is initiated.
+    -	(2) Download power plant electricity data via API calls to Docker container.
+    -	(3) Upload the data from container to GCS.
+    -	(4) Load data from GCS to BigQuery for SQL processing.
+    -	(5) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery.
+    -	(6) Run the dates.sql queries to create dates table for PBI
+    -	(7) Run the process_df_usa.sql queries to process raw data fetched from the API calls. This file selects desired columns, recategorizes energy sources into broader categories (e.g., Wood Waste Solids is recategorized as Other Renewables), categorize states into regions, perform unit conversion, removes rows that would double-count generation data, and corrects geogrpahic errors in the data
+    -	(6) Run the update_power_plants.sql queries to correct geographic errors in the power plants' location data.
+  -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI. As of Feb. 10, 2025, **usa_processed** contains 6,165,628 rows of data.
   -	Since I use the free tier of Power BI Service, I am unable to implement an auto-refresh feature that updates the dashboard automatically with new BigQuery data. I would have to re-import the updated data in Power BI after the scheduled DAG is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
-
-- **dates.sql:** This BigQuery SQL script creates a table called **dates** covering the range of dates in the power plant electricity data.
-- **transformation.sql:** This script processes the power plant electricity data and does the following:
-    -	Convert energy units
-    -	Categorize fuel types (i.e., electricity sources) into broader categories
-    -	Categorize states into regions
-    -	As of Feb. 10, 2025, contains 6,165,628 rows of data.
 
 Below is an image of the data model in Power BI, demonstrating the relationships between the imported tables for this PBI report.
 
