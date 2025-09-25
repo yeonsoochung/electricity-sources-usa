@@ -30,7 +30,7 @@ Below is an image of my report:
     -	(5) Load the power plants location data, which was uploaded manually to the GCS bucket, from GCS to BigQuery.
     -	(6) Run the dates.sql queries to create dates table for PBI
     -	(7) Run the process_df_usa.sql queries to process raw data fetched from the API calls. This file selects desired columns, recategorizes energy sources into broader categories (e.g., Wood Waste Solids is recategorized as Other Renewables), categorize states into regions, perform unit conversion, removes rows that would double-count generation data, and corrects geogrpahic errors in the data
-    -	(8) Run the update_power_plants.sql queries to correct geographic errors in the power plants' location data.
+    -	(8) Run the update_power_plants.sql queries to correct geographic errors in the power plants location data.
   -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI. **usa_processed** contains over 6 million rows of data.
   -	Since I use the free tier of Power BI Service, I am unable to implement an auto-refresh feature that updates the dashboard automatically with new BigQuery data. I would have to re-import the updated data in Power BI after the scheduled DAG is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
 
