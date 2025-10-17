@@ -218,54 +218,54 @@ load_gcs_to_bq_task_2 = GCSToBigQueryOperator(
     dag=dag,
 )
 
-# # Read sql files
-# sql_dates_path = "dags/dates.sql"
-# with open(sql_dates_path, "r") as dates_file:
-#     sql_dates_query = dates_file.read()
+# Read sql files
+sql_dates_path = "dags/dates.sql"
+with open(sql_dates_path, "r") as dates_file:
+    sql_dates_query = dates_file.read()
 
-# sql_transformation_1_path = "dags/process_df_usa.sql"
-# with open(sql_transformation_1_path, "r") as transformation_1_file:
-#     sql_transformation_1_query = transformation_1_file.read()
+sql_transformation_1_path = "dags/process_df_usa.sql"
+with open(sql_transformation_1_path, "r") as transformation_1_file:
+    sql_transformation_1_query = transformation_1_file.read()
 
-# sql_transformation_2_path = "dags/update_power_plants.sql"
-# with open(sql_transformation_2_path, "r") as transformation_2_file:
-#     sql_transformation_2_query = transformation_2_file.read()
+sql_transformation_2_path = "dags/update_power_plants.sql"
+with open(sql_transformation_2_path, "r") as transformation_2_file:
+    sql_transformation_2_query = transformation_2_file.read()
 
-# # Task to run SQL query in BQ to process data
-# run_bq_dates_query = BigQueryInsertJobOperator(
-#     task_id="run_bq_dates_query",
-#     configuration={
-#         "query": {
-#             "query": sql_dates_query,
-#             "useLegacySql": False
-#         }
-#     },
-#     dag=dag,
-# )
+# Task to run SQL query in BQ to process data
+run_bq_dates_query = BigQueryInsertJobOperator(
+    task_id="run_bq_dates_query",
+    configuration={
+        "query": {
+            "query": sql_dates_query,
+            "useLegacySql": False
+        }
+    },
+    dag=dag,
+)
 
-# run_bq_transformation_1_query = BigQueryInsertJobOperator(
-#     task_id="run_bq_transformation_1_query",
-#     configuration={
-#         "query": {
-#             "query": sql_transformation_1_query,
-#             "useLegacySql": False
-#         }
-#     },
-#     dag=dag,
-# )
+run_bq_transformation_1_query = BigQueryInsertJobOperator(
+    task_id="run_bq_transformation_1_query",
+    configuration={
+        "query": {
+            "query": sql_transformation_1_query,
+            "useLegacySql": False
+        }
+    },
+    dag=dag,
+)
 
-# run_bq_transformation_2_query = BigQueryInsertJobOperator(
-#     task_id="run_bq_transformation_2_query",
-#     configuration={
-#         "query": {
-#             "query": sql_transformation_2_query,
-#             "useLegacySql": False
-#         }
-#     },
-#     dag=dag,
-# )
+run_bq_transformation_2_query = BigQueryInsertJobOperator(
+    task_id="run_bq_transformation_2_query",
+    configuration={
+        "query": {
+            "query": sql_transformation_2_query,
+            "useLegacySql": False
+        }
+    },
+    dag=dag,
+)
 
 # Define Task Dependencies
 latest_only >> download_task >> \
-    upload_to_gcs_task >> load_gcs_to_bq_task_1 >> load_gcs_to_bq_task_2
-    # run_bq_dates_query >> run_bq_transformation_1_query >> run_bq_transformation_2_query
+    upload_to_gcs_task >> load_gcs_to_bq_task_1 >> load_gcs_to_bq_task_2 >> \
+    run_bq_dates_query >> run_bq_transformation_1_query >> run_bq_transformation_2_query
