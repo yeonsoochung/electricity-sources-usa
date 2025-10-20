@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `elec_power_plants.dates`;
 CREATE TABLE `elec_power_plants.dates` AS (
 WITH date_range AS (
   SELECT 
-    MIN(PARSE_DATE('%Y-%m', Period)) AS start_date,
+    DATE '2001-01-01' AS start_date,
     MAX(PARSE_DATE('%Y-%m', Period)) AS end_date
   FROM `elec_power_plants.usa_raw`
 ),
