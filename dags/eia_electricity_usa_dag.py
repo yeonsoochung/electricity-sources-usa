@@ -55,17 +55,6 @@ local_csv_path = f"/opt/airflow/data/{csv_name}"
 gcs_path = f"csv_exports_test/{csv_name}"  # Path inside GCS bucket
 gcs_bucket = "ysc-eia-project-bucket"  # Your GCS bucket name
 
-# def get_json(url, params):
-#     try:
-#         # Make the request to the EIA API
-#         response = requests.get(url, params=params)
-#         response.raise_for_status()  # Raise an exception for HTTP errors
-#         json_data = response.json()
-#     except requests.exceptions.RequestException as e:
-#         print("Error fetching data:", e)
-#         return None
-#     return json_data
-
 def get_json(url, params, max_retries=3, backoff_factor=2): # add retries
     """
     Fetch JSON data from the given URL with retries on failure.
@@ -117,41 +106,6 @@ def create_csv(url, params):
     df_usa.to_csv(local_csv_path, index=False)
     return
 
-# def create_csv(url, params): # fetches smaller chunks of data by setting offset to 0 after each year
-#     df_usa = pd.DataFrame()
-
-#     for state in states:
-#         df_state = pd.DataFrame()
-
-#         # Loop year by year to keep offsets small
-#         for year in range(2001, datetime.now().year + 1):
-#             params["facets[state][]"] = [state]
-#             params["start"] = f"{year}-01"
-#             params["end"] = f"{year}-12"
-#             params["offset"] = 0  # reset each year
-
-#             # Fetch first batch for this year
-#             json_data = get_json(url, params)
-#             df_year = pd.DataFrame(json_data["response"]["data"])
-
-#             # Paginate if needed
-#             while len(json_data["response"]["data"]) == 5000:
-#                 params["offset"] += 5000
-#                 json_data = get_json(url, params)
-#                 df_new = pd.DataFrame(json_data["response"]["data"])
-#                 df_year = pd.concat([df_year, df_new], axis=0, ignore_index=True)
-
-#             # Add yearly data into state df
-#             df_state = pd.concat([df_state, df_year], axis=0, ignore_index=True)
-
-#         # Deduplicate and append to USA df
-#         df_state.drop_duplicates(inplace=True)
-#         df_usa = pd.concat([df_usa, df_state], axis=0, ignore_index=True)
-
-#     # Write final file
-#     df_usa.to_csv(local_csv_path, index=False)
-#     return
-
 
 # Instantiate task to download data from API
 download_task = PythonOperator(
@@ -163,16 +117,6 @@ download_task = PythonOperator(
     },
     dag = dag
 )
-
-# Task to upload data to GCS bucket (THIS TASK TIMED OUT; USE TASK CODE BELOW)
-# upload_to_gcs_task = LocalFilesystemToGCSOperator(
-#     task_id="upload_to_gcs",
-#     src=local_csv_path,  # Local file path
-#     dst=gcs_path,  # Destination path in GCS bucket
-#     bucket=gcs_bucket,
-#     mime_type="text/csv",
-#     dag=dag
-# )
 
 def upload_to_gcs():
     storage_client = storage.Client()
