@@ -3,8 +3,7 @@
 -- Convert units of consumption columns from MMBtu to MWh
 -- Plant "AE Hunlock 4" had 2 plant codes associated with it; redundant one (shared with another plant) is removed
 -- Correct geographic errors
-DROP TABLE IF EXISTS `elec_power_plants.usa_processed`;
-CREATE TABLE `elec_power_plants.usa_processed` AS (
+CREATE OR REPLACE TABLE `elec_power_plants.usa_processed_recent` AS (
 WITH usa_processed_cte AS (
 	SELECT DISTINCT PARSE_DATE('%Y-%m', Period) AS `Month Start`, 
 		`plantCode` AS `Plant Code`, `plantName` AS `Plant Name`, 
@@ -56,4 +55,19 @@ SELECT `Month Start`, `Plant Code`, `Plant Name`, `Fuel Type`, `Fuel Type Catego
 	`Consumption for EG in MWh`, `Total Consumption in MWh`, `Generation in MWh`, `Gross Generation in MWh`
 FROM usa_processed_cte
 ) ;
+
+CREATE OR REPLACE TABLE `elec_power_plants.usa_processed_backup` AS
+SELECT * FROM `elec_power_plants.usa_processed`;
+
+CREATE OR REPLACE TABLE `elec_power_plants.usa_processed` AS (
+SELECT `Month Start`, `Plant Code`, `Plant Name`, `Fuel Type`, `Fuel Type Category`, `Renewable Type`, `State ID`, `State`, `Region`, 
+	`Consumption for EG in MWh`, `Total Consumption in MWh`, `Generation in MWh`, `Gross Generation in MWh`
+FROM (
+	SELECT * FROM `elec_power_plants.usa_processed`
+	WHERE `Month Start` < (SELECT MIN(`Month Start`) FROM `elec_power_plants.usa_processed_recent`)
+	UNION ALL
+	SELECT * FROM `elec_power_plants.usa_processed_recent` )
+);
+
+
 

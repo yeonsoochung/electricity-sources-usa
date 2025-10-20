@@ -6,6 +6,7 @@ from airflow.providers.google.cloud.transfers.local_to_gcs import LocalFilesyste
 from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 import time
 import requests
 import pandas as pd
@@ -31,24 +32,23 @@ latest_only = LatestOnlyOperator(
 # Define API input parameters
 api_key = os.getenv("API_KEY")
 url_plants = f"https://api.eia.gov/v2/electricity/facility-fuel/data/?api_key={api_key}"
-# states = ["IL", "IN", "IA"]
 states = ["IL", "IN", "IA", "KS", "MI", "MN", "MO", "NE", "ND", "OH", "SD", "WI", "IL", "IN", "IA", 
           "CT", "ME", "MA", "NH", "NJ", "NY", "PA", "RI", "VT", "AL", "AR", "FL", "GA", "KY", "LA", 
           "MS", "NC", "OK", "SC", "TN", "TX", "VA", "DC", "MD", "DE", "WV", "AZ", "AK", "CO", "ID", 
           "HI", "MT", "NV", "OR", "NM", "UT", "WA", "WY", "CA"]
+start_date = (datetime.today() - relativedelta(months=24)).strftime("%Y-%m")
 params_plants = {
     "frequency": "monthly",
     "data[]": ["consumption-for-eg-btu", "total-consumption-btu", "generation", "gross-generation"],
     # "facets[state][]": states,
-    "start": "2001-01",
-    # "start": "2025-01",
+    # "start": "2001-01",
     "end": None,
     "sort[0][column]": "period",
     "sort[0][direction]": "asc",
     "offset": "0",
     "length": "5000"
 }
-csv_name = f"elec_power_plants_usa.csv"
+csv_name = f"elec_power_plants_usa_new.csv"
 
 # Define local and GCS file paths
 local_csv_path = f"/opt/airflow/data/{csv_name}"
@@ -87,8 +87,7 @@ def create_csv(url, params):
     for state in states:
         counter = 0
         params["facets[state][]"] = [state]
-        params["start"] = "2001-01"  # Reset start date for each state
-        # params["start"] = "2025-01"  # Reset start date for each state
+        params["start"] = start_date, # reset start date for each state
         params["offset"] = 0  # Reset pagination offset
         if counter == 0:
             json_data = requests.get(url, params=params).json()
@@ -136,7 +135,7 @@ gcp_project_id = "eia-project-440601"
 bq_dataset = "elec_power_plants"
 bq_raw_table = "usa_raw"
 
-# Task to load elec-power-plants data from GCS to BQ (BigQuery)
+# Task to load new elec-power-plants data from GCS to BQ (BigQuery)
 load_gcs_to_bq_task_1 = GCSToBigQueryOperator(
     task_id="load_gcs_to_bq_elec",
     bucket=gcs_bucket,
