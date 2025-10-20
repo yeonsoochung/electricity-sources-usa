@@ -18,7 +18,7 @@ Below is an image of my report:
 
 ## ELT Pipeline and Data Model
 
-- **api_gcs_bq_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
+- **eia_electricity_usa_dag.py:** This Python script creates the Airflow DAG, pictured below.
   - <p align="center">
     <img src="images/dag.jpg" alt="Alt text" width="1000"/>
     </p>
@@ -33,6 +33,7 @@ Below is an image of my report:
     -	(8) Run the update_power_plants.sql queries to correct geographic errors in the power plants location data.
   -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI. **usa_processed** contains over 2 million rows of data (the raw dataset had over 6 million).
   -	Since I use the free tier of Power BI Service, I am unable to implement an auto-refresh feature that updates the dashboard automatically with new BigQuery data. I would have to re-import the updated data in Power BI after the scheduled DAG is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
+- **Oct. 20, 2025 Update:** eia_electricity_usa_dag.py and the transformation files were updated so that in subsequent pipeline executions, the last 24 months of data is fetched via API call and processed, then appended to existing processed data that starts from 2025-01. This is to dramatically reduce execution time compared to collecting all the data since 2025-01 every run. This is reflected in the commit history.
 
 Below is an image of the data model in Power BI, demonstrating the relationships between the imported tables for this PBI report.
 
