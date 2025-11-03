@@ -174,6 +174,19 @@ sql_transformation_2_path = "dags/update_power_plants.sql"
 with open(sql_transformation_2_path, "r") as transformation_2_file:
     sql_transformation_2_query = transformation_2_file.read()
 
+bq_data_backup = BigQueryInsertJobOperator(
+    task_id="backup_usa_processed",
+    configuration={
+        "query": {
+            "query": """
+            CREATE OR REPLACE TABLE `elec_power_plants.usa_processed_backup` AS
+            SELECT * FROM `elec_power_plants.usa_processed`;
+            """,
+            "useLegacySql": False,
+        }
+    },
+)
+
 # Task to run SQL query in BQ to process data
 run_bq_dates_query = BigQueryInsertJobOperator(
     task_id="run_bq_dates_query",
@@ -210,5 +223,5 @@ run_bq_transformation_2_query = BigQueryInsertJobOperator(
 
 # Define Task Dependencies
 latest_only >> download_task >> \
-    upload_to_gcs_task >> load_gcs_to_bq_task_1 >> load_gcs_to_bq_task_2 >> \
+    upload_to_gcs_task >> load_gcs_to_bq_task_1 >> load_gcs_to_bq_task_2 >> bq_data_backup >> \
     run_bq_dates_query >> run_bq_transformation_1_query >> run_bq_transformation_2_query
