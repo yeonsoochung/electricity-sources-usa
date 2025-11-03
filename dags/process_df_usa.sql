@@ -56,9 +56,6 @@ SELECT `Month Start`, `Plant Code`, `Plant Name`, `Fuel Type`, `Fuel Type Catego
 FROM usa_processed_cte
 ) ;
 
-CREATE OR REPLACE TABLE `elec_power_plants.usa_processed_backup` AS
-SELECT * FROM `elec_power_plants.usa_processed`;
-
 CREATE OR REPLACE TABLE `elec_power_plants.usa_processed` AS (
 SELECT `Month Start`, `Plant Code`, `Plant Name`, `Fuel Type`, `Fuel Type Category`, `Renewable Type`, `State ID`, `State`, `Region`, 
 	`Consumption for EG in MWh`, `Total Consumption in MWh`, `Generation in MWh`, `Gross Generation in MWh`
