@@ -35,13 +35,28 @@ Note: Total generation here means total net generation, that is, gross generatio
     -	(8) Run the update_power_plants.sql queries to correct geographic errors in the power plants location data.
   -	The final data tables, called **usa_processed**, **dates**, and **power_plants**, are imported from BigQuery to Power BI. **usa_processed** contains over 2 million rows of data (the raw dataset had over 6 million).
   -	Since I use the free tier of Power BI Service, I am unable to implement an auto-refresh feature that updates the dashboard automatically with new BigQuery data. I would have to re-import the updated data in Power BI after the scheduled DAG is executed, and publish it to Service manually. I will make attempts to do this and update this repo each month.
-- **Oct. 20, 2025 Update:** eia_electricity_usa_dag.py and the transformation files were updated so that in subsequent pipeline executions, the last 24 months of data is fetched via API call and processed, then appended to existing processed data that starts from 2025-01. This is to dramatically reduce execution time compared to collecting all the data since 2025-01 every run. This is reflected in the commit history.
+- **Oct. 20, 2025 Update:** eia_electricity_usa_dag.py and the transformation files were updated so that in subsequent pipeline executions, the last 24 months of data is fetched via API call and processed, then appended to existing processed data that starts from 2025-01. This is to dramatically reduce execution time compared to collecting all the data since 2025-01 every run.
 
 Below is an image of the data model in Power BI, demonstrating the relationships between the imported tables for this PBI report.
 
 <p align="center">
 <img src="images/data-model.jpg" alt="Alt text" width="1000"/>
 </p>
+
+## Data Cleaning and Preparation
+
+The previous section touched upon data processing steps applied with SQL. Below is a more comprehensive list of steps applied to the raw data itself.
+
+- Standardized core field such as dates, numerical electricity generation values, and units of measurement to ensure consistency across reported values.
+- Energy source labels in the raw data were too granular for my reporting purposes, so I recategorized them into more familiar, broader categories. Ex: ('Distillate Fuel Oil', 'Residual Fuel Oil', 'Petroleum Coke', 'Waste Oil and Other Oils') were recategorized as 'Fuel', ('Hydroelectric Pumped Storage', 'Hydroelectric Conventional') as 'Hydro', etc. This allows for clearer comparative analysis and reporting.
+- One of the more critical issues involved potential double-counting of generation values, as electricity generation appeared across two categorical columns: 'fuelTypeDescription', which is energy source, and 'primeMover', which is the energy conversion device, e.g., engine, turbine, etc. In addition, both columns contain values of 'ALL' or 'Total', so directly summing the raw data's generation values will essentially sum "duplicate" values.
+
+As described in the previous section, I used SQL to:
+
+- Create a table of dates that cover the range of the total raw data. Columns such as month, year, and quarter were created to support time-based reporting in PBI.
+- Correct geographical data errors identified in the power plants table.
+
+I validated the data by reconciling aggregates reported in PBI against published reference source, e.g., compared yearly generation totals with published reference sources, and reviewed trends over time to ensure they aligned with known industry standards (ex: increase in renewable energy production). I also compared aggregated measures by directly querying the raw data to ensure transformations were performed accurately.
 
 ## Applications
 
