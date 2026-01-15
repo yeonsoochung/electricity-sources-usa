@@ -53,7 +53,7 @@ For example, when evaluating potential data center sites in Illinois powered by 
 <img src="images/illinois-naturalgas.jpg" alt="Alt text" width="1000"/>
 </p>
 
-The dashboard surfaced the top electricity-generating utilities and individual power plants by natural gas capacity within the state, allowing the firm to quickly assess which utilities and facilities were most capable of supporting data center-scale demand. This enabled early-stage screening of viable locations before engaging utilities and energy providers for deeper technical and commercial discussions.
+The dashboard surfaced the top electricity-generating utilities and displayed all power plant facilities by natural gas capacity within the state, allowing the firm to quickly assess which utilities and facilities were most capable of supporting data center-scale demand. This enabled early-stage screening of viable locations before engaging utilities and energy providers for deeper technical and commercial discussions.
 
 
 
