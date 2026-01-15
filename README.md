@@ -47,7 +47,7 @@ Below is an image of the data model in Power BI, demonstrating the relationships
 
 In 2025, a consulting firm used a version of this dashboard to support site selection analysis for new hyperscale data centers. The dashboard was used to prioritize candidate locations based on proximity to power plants by energy source, with source-level generation capacity serving as a key operational metric.
 
-For example, when evaluating potential data center sites in Illinois powered by natural gas, analysts filtered the dashboard by **State = Illinois** and **Source = Natural Gas**:
+For example, when evaluating potential data center sites in Illinois powered by natural gas, one can filter the dashboard by **State = Illinois** and **Source = Natural Gas**:
 
 <p align="center">
 <img src="images/illinois-naturalgas.jpg" alt="Alt text" width="1000"/>
